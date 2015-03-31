@@ -3,17 +3,20 @@ permalink:        pretty
 relative_permalinks: true
 
 # Setup
-title:            Poole
-tagline:          The Jekyll Butler
-url:              http://getpoole.com
+title:            CodingHighway
+tagline:          A Computer Science blog
+url:              http://www.codinghighway.com
 paginate:         1
 baseurl:          /
 author:
-  name:           Mark Otto
-  url:            https://twitter.com/mdo
-  email:          markdotto@gmail.com
+  name:           Filipe Goncalves
+  url:            https://github.com/filipegoncalves
+  email:          filipe@codinghighway.com
 
 # Custom vars
 version:          1.0.0
 github:
-  repo:           https://github.com/poole/poole
+  repo:           https://github.com/filipegoncalves/filipegoncalves.github.io
+
+# List of pages to include in the header of the website.
+pages_list: {'Archive':'/archive','About':'/about','Feed':'/atom.xml'}
