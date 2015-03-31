@@ -3,11 +3,6 @@ rvm:
   - 2.1
 script: jekyll build && htmlproof ./_site
 
-# branch whitelist
-branches:
-  only:
-    - gh-pages
-
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
