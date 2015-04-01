@@ -1,4 +1,4 @@
-# filipegoncalves.github.io
+# filipegoncalves.github.io [![Build Status](https://travis-ci.org/filipegoncalves/filipegoncalves.github.io.svg?branch=master)](https://travis-ci.org/filipegoncalves/filipegoncalves.github.io)
 
 This is an ongoing project where I am manually migrating [my current blog](http://www.codinghighway.com) into Jekyll.
 
