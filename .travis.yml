@@ -9,3 +9,9 @@ script:
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
+notifications:
+  email:
+    recipients:
+      - filipe@codinghighway.com
+  irc: "irc.mindforge.org#codinghighway"
