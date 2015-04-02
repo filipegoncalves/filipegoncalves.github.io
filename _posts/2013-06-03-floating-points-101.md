@@ -257,4 +257,4 @@ Dealing with overflow errors is one of those things that is easy in floats. When
 
 If you're building some program that uses lots of fractions and you want very precise computations, consider representing fractions as a pair of `int`. This is often a good way to avoid loss of significance and accumulated error problems.
 
-For interested readers, I suggest having a look at [What Every Computer Scientist Should Know About Floating Point Arithmetic](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.6768).
+For interested readers, I suggest having a look at *What Every Computer Scientist Should Know About Floating Point Arithmetic* (google it).
