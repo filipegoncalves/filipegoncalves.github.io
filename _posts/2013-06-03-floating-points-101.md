@@ -7,7 +7,7 @@ A brief introduction to IEEE 754 standard for float representation
 
 -----
 
-Most people use `float`s pretty much the same way as they use `int`s. After all, what's so special about a `float`? It's no big deal, right?
+Most people use `float` pretty much the same way as they use `int`. After all, what's so special about a `float`? It's no big deal, right?
 
 Lots of things can go severely wrong with floating point arithmetic. Lots of people know this, but they tend to ignore it until the shit hits the fan. Bugs with floating point numbers can be really, really, really mysterious and extremely hard to track down. In this post, I will cover a very common standard, IEEE754m, the one on which most machines rely on to represent floating point numbers as a sequence of bits.
 
@@ -34,9 +34,9 @@ Anyways, equality is not the main issue here. In fact, we will see that strict e
 
 IEEE 754 defines a canonical representation known as the *1.m representation*. It fixes the problem by having the mantissa bits define the decimal part of the number that comes after an implicit 1 to the left of the decimal point. The exponent is then adjusted accordingly. This is a little tricky to understand at first, so let's see an example. Suppose we have:
 
-| S | E | E | E | E | E | E | E | E | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M |
-| - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| S   | E   | E   | E   | E   | E   | E   | E   | E   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 1   | 1   | 1   | 1   | 1   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   |
 
 The mantissa is `11110000000000000000000`, so, according to what I mentioned earlier about the 1.m representation, this is the decimal part of the number and there's an implicit 1 on the left, meaning we end up with `1.11110000000000000000000`. The leading `1.` is **NOT** represented in the bit pattern anywhere, like I said, it is assumed that there is always a `1.` prefix and that the mantissa bits only describe the decimal part.
 
@@ -66,9 +66,9 @@ With this in mind, one would assume that the 0-representation convention togethe
 
 Again, an example: 
 
-| S | E | E | E | E | E | E | E | E | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M |
-| - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| S   | E   | E   | E   | E   | E   | E   | E   | E   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 1   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   |
 
 Because each of the original 8 exponnt bits is 0 and the mantissa is not 0, then the exponent extends up to the first 1-bit in the mantissa. It used 15 more bits than it was supposed, so our new exponent is -126-15 = -141, so this is representing \\(2^{-141}\\), which is roughly \\(3.6 \times 10^{-43}\\). However, this loses precision, because the exponent "stole" bits from the mantissa.
 
@@ -91,7 +91,11 @@ What about encoding a base-10 floating point into this representation?
 
 Let's go through an example and pick the number \\(11.47\\). The first step is to convert it into a binary number. \\(11 = 8 + 2 + 1\\), so the integer part is \\(1011\\).
 
-Now, for the decimal part, we can see that \\(0.47\\) is infinite in base 2 (you may want to see [Formatting your mind for base-b]({% post_url 2013-05-29-formatting-your-mind-for-base-b %}) to learn how to convert base-10 fractions to base-2). In binary, \\(0.47\\) is \\(0111100001010001111010111(0111100001010001111010111)\dots\\)
+Now, for the decimal part, we can see that \\(0.47\\) is infinite in base 2 (you may want to see [Formatting your mind for base-b]({% post_url 2013-05-29-formatting-your-mind-for-base-b %}) to learn how to convert base-10 fractions to base-2). In binary, \\(0.47\\) is
+
+$$
+0111100001010001111010111(0111100001010001111010111)\dots
+$$
 
 I deliberately chose this contrived example; converting base-10 fractions into base-2 that are already base-2 fractions takes away all the fun of it (imagine if the example was 11.5 - that's damn easy!). Also, because our integer part is 11, and after the first 1-bit we have 3 bits, we will have to move these 3 bits into the mantissa bits because of the 1.m representation, thus losing 3 bits for the decimal part.
 
@@ -103,11 +107,11 @@ $$
 
 And now comes the exponent. We need to move the decimal point 3 places to the right, meaning our exponent will be \\(3+127 = 130\\), which is `10000010` in binary. The number is positive, so the sign bit will be 0. So, 11.47 is represented as:
 
-| S | E | E | E | E | E | E | E | E | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M | M |
-| - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 0 |
+| S   | E   | E   | E   | E   | E   | E   | E   | E   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   | M   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0   | 1   | 0   | 0   | 0   | 0   | 0   | 1   | 0   | 0   | 1   | 1   | 0   | 1   | 1   | 1   | 1   | 0   | 0   | 0   | 0   | 1   | 0   | 1   | 0   | 0   | 0   | 1   | 1   | 1   | 1   | 0   |
 
-When I tested this example, I noticed that the last bit of the mantissa was set to 1. Instead of ending with `11110`, it ended with `11111`. I suspect this is because of rounding that was made when the 3 decimal precision bits were lost. The interesting fact is that if it was \\(1.47\\) instead of \\(11.47\\), which doesn't steal bits from the mantissa, the last bit would indeed be a 0. In fact, for \\(1.47\\), the last mantissa bit is not the same bit as for 11.47 - it's the third bit counting from the end. So, yeah, it must be some rounding that is being computed. Because we have a finite set of bits, the computer must round floats accordingly.
+When I tested this example, I noticed that the last bit of the mantissa was set to 1. Instead of ending with `11110`, it ended with `11111`. I suspect this is because of rounding that was made when the 3 decimal precision bits were lost. The interesting fact is that if it was \\(1.47\\) instead of \\(11.47\\), which doesn't steal bits from the mantissa, the last bit would indeed be a 0. In fact, for \\(1.47\\), the last mantissa bit is not the same bit as for \\(11.47\\) - it's the third bit counting from the end. So, yeah, it must be some rounding that is being computed. Because we have a finite set of bits, the computer must round floats accordingly.
 
 What about doubles? Doubles work exactly the same way, except you get to have 52 bits for mantissa and 11 bits for the exponent. Oh, and the exponent shift amount is 1023.
 
@@ -239,7 +243,7 @@ This printed:
 1
 ```
 
-Very nice!!! But this is not the definite solution to every problem. It can misbehave when testing against 0. Most of the times, we won't have a perfect `0.0` value, instead, we will have something that is very close to zero. For example, \\(sin(\pi)\\) doesn't give us 0 - in my machine I get \\(1.22465\times10^{-16}\\). The test that checks if the exponents are different succeeds and it will say that \\(sin(\i)\\) is not equal to 0.
+Very nice!!! But this is not the definite solution to every problem. It can misbehave when testing against 0. Most of the times, we won't have a perfect `0.0` value, instead, we will have something that is very close to zero. For example, \\(sin(\pi)\\) doesn't give us 0 - in my machine I get \\(1.22465\times10^{-16}\\). The test that checks if the exponents are different succeeds and it will say that \\(sin(\pi)\\) is not equal to 0.
 
 ### Accumulated errors
 
@@ -249,8 +253,8 @@ As we have seen, floats get "dirtier" everytime you make an operation with them.
 
 Dealing with overflow errors is one of those things that is easy in floats. When an operation with floats overflows, we get \\(\pm\infty\\), depending on which "side" overflowed. Infinity quantities work as expected, i.e., any number is less than \\(\infty\\), and greater than \\(-\infty\\).
 
-### Consider only using `int`s
+### Consider only using `int`
 
-If you're building some program that uses lots of fractions and you want very precise computations, consider representing fractions as a pair of `int`s. This is often a good way to avoid loss of significance and accumulated error problems.
+If you're building some program that uses lots of fractions and you want very precise computations, consider representing fractions as a pair of `int`. This is often a good way to avoid loss of significance and accumulated error problems.
 
-For interested readers, I suggest having a look at (What Every Computer Scientist Should Know About Floating Point Arithmetic)[http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.6768].
+For interested readers, I suggest having a look at [What Every Computer Scientist Should Know About Floating Point Arithmetic](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.6768).
