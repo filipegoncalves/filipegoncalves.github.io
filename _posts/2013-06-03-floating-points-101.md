@@ -9,7 +9,7 @@ A brief introduction to IEEE 754 standard for float representation
 
 Most people use `float` pretty much the same way as they use `int`. After all, what's so special about a `float`? It's no big deal, right?
 
-Lots of things can go severely wrong with floating point arithmetic. Lots of people know this, but they tend to ignore it until the shit hits the fan. Bugs with floating point numbers can be really, really, really mysterious and extremely hard to track down. In this post, I will cover a very common standard, IEEE754m, the one on which most machines rely on to represent floating point numbers as a sequence of bits.
+Lots of things can go severely wrong with floating point arithmetic. Lots of people know this, but they tend to ignore it until the shit hits the fan. Bugs with floating point numbers can be really, really, really mysterious and extremely hard to track down. In this post, I will cover a very common standard, IEEE754, the one on which most machines rely on to represent floating point numbers as a sequence of bits.
 
 The real question here is: how can a computer represent fractional number using 0's and 1's?
 
