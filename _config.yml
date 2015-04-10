@@ -13,6 +13,7 @@ tagline:          A Computer Science blog
 url:              http://www.codinghighway.com
 paginate:         1
 baseurl:          /
+assets:		  assets/
 author:
   name:           Filipe Goncalves
   url:            https://github.com/filipegoncalves
