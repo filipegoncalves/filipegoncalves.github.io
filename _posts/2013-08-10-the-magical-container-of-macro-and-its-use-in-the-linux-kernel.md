@@ -30,6 +30,7 @@ Grrrrr!
 
 ANYWAY...
 
+
 Today, I want to show you something that you probably never thought of, unless, of course, you work in the linux kernel. 
 
 The kernel defines arbitrary, generic data structures that can be included within other structures. For example, it defines a double linked list data type in `include/linux/list.h`.
