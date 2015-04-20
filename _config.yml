@@ -1,7 +1,10 @@
 # Dependencies
-markdown: redcarpet
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+markdown: KramdownPygments
+kramdown:
+  math_engine: mathjax
+  input: GFM
+  default_lang: c
+
 
 # Permalinks
 permalink:        pretty
