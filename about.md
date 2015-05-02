@@ -22,4 +22,4 @@ And remember: the spirit is that if you know something, you should post it on th
 You can reach me via:
 
 * E-mail: filipe [at] c0ding highway [dot] com (remove spaces, and replace the zero in `c0ding` with an `o`)
-* IRC: I am **Fill** on IRC. I run a small IRC network with a bunch of other great people that goes under the name MindForge (irc.mindforge.org) - you can find me on #mindforge-chat. I'm also on Mozilla's IRC.
+* IRC: I am **Fill** on IRC. I run a small IRC network with a bunch of other great people that goes under the name of MindForge (irc.mindforge.org) - you can find me on #mindforge-chat. I'm also on Mozilla's IRC.
