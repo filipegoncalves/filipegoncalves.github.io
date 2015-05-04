@@ -13,6 +13,6 @@ I believe that helping the community is the least I can do after everything I le
 
 You can also [find me on LinkedIn](https://www.linkedin.com/pub/filipe-gonçalves/5b/597/892). I'm not a huge fan of LinkedIn, and honestly, haven't invested much time in polishing my profile in there.
 
-## Other forms of contact
+## Github
 
-See the about page.
+* [filipegoncalves](https://github.com/filipegoncalves)
