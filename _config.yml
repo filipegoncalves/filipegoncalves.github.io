@@ -31,7 +31,6 @@ github:
   repo:           https://github.com/filipegoncalves/filipegoncalves.github.io
 
 # List of pages to include in the header of the website.
-# pages_list: {'Archive':'/archive','Books':'/techbooks','Resume':'/resume','About':'/about','Feed':'/atom.xml'}
 pages_list: {'Archive':'/archive','Books':'/techbooks','Resume':'/resume','About':'/about'}
 
 # Needed for travis-ci. See http://jekyllrb.com/docs/continuous-integration/
