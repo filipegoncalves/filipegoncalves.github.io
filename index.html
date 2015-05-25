@@ -12,7 +12,26 @@ title: Home
       </a>
     </h1>
 
-    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time>
+    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
+      <!-- {{ post.date | date_to_string }} -->
+      <!-- Taken from http://alanwsmith.com/jekyll-liquid-date-formatting-examples -->
+      <!-- Whitespace added for readability -->
+      {% assign d = post.date | date: "%-d" %} 
+      {% assign m = post.date | date: "%B" %} 
+
+      {% case m %}
+      {% when 'April' or 'May' or 'June' or 'July' %}{{ m }}
+      {% when 'September' %}Sept.
+      {% else %}{{ post.date | date: "%b" }}.
+      {% endcase %}
+      {% case d %}
+      {% when '1' or '21' or '31' %}{{ d }}st,
+      {% when '2' or '22' %}{{ d }}nd,
+      {% when '3' or '23' %}{{ d }}rd,
+      {% else %}{{ d }}th,
+      {% endcase %}
+      {{ post.date | date: "%Y" }}
+    </time>
 
     {{ post.content }}
   </article>
